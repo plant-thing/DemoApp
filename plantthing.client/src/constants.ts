@@ -1,4 +1,10 @@
-import { PlantHappiness, StatsResult, StatsType } from './types';
+import {
+  PlantHappiness,
+  ShopItem,
+  ShopItemType,
+  StatsResult,
+  StatsType,
+} from './types';
 
 export const StatsTypeImageMapping: Record<StatsType, string> = {
   [StatsType.light]: '/assets/light.png',
@@ -81,26 +87,77 @@ export const MaxWaterValue = 100;
 
 export const MaxTempatureValue = 40;
 
-export const RoomsImagesMapping: Record<number, string> = {
-  [1]: 'bg-[url(/assets/room1.png)]',
-  [2]: 'bg-[url(/assets/room2.png)]',
-  [3]: 'bg-[url(/assets/room3.png)]',
-};
-
 export const SproutImagesMapping: Record<number, string> = {
   [1]: '/assets/sprout1.png',
   [2]: '/assets/sprout2.png',
   [3]: '/assets/sprout3.png',
 };
 
-export const EyesImagesMapping: Record<number, string> = {
-  [1]: '/assets/eyes1.png',
-  [2]: '/assets/eyes2.png',
-  [3]: '/assets/eyes3.png',
-};
-
-export const PotsImagesMapping: Record<number, string> = {
-  [1]: '/assets/pot1.png',
-  [2]: '/assets/pot2.png',
-  [3]: '/assets/pot3.png',
-};
+export const ShopItems: ShopItem[] = [
+  //Eyes
+  {
+    code: 1,
+    name: 'Starter eyes',
+    imageUrl: '/assets/eyes1.png',
+    shopImageUrl: '/assets/shop/eyes1.png',
+    requiredLevel: 0,
+    coinCost: 0,
+    type: ShopItemType.eyes,
+  },
+  {
+    code: 2,
+    name: 'Blue eyes',
+    imageUrl: '/assets/eyes2.png',
+    shopImageUrl: '/assets/shop/eyes2.png',
+    requiredLevel: 2,
+    coinCost: 20,
+    type: ShopItemType.eyes,
+  },
+  //Pots
+  {
+    code: 3,
+    name: 'Starter pot',
+    imageUrl: '/assets/pot1.png',
+    shopImageUrl: '/assets/shop/pot1.png',
+    requiredLevel: 0,
+    coinCost: 0,
+    type: ShopItemType.pots,
+  },
+  {
+    code: 4,
+    name: 'Blue pot',
+    imageUrl: '/assets/pot2.png',
+    shopImageUrl: '/assets/shop/pot2.png',
+    requiredLevel: 2,
+    coinCost: 20,
+    type: ShopItemType.pots,
+  },
+  {
+    code: 5,
+    name: 'Cheap Red pot',
+    imageUrl: '/assets/pot3.png',
+    shopImageUrl: '/assets/shop/pot3.png',
+    requiredLevel: 2,
+    coinCost: 40,
+    type: ShopItemType.pots,
+  },
+  {
+    code: 6,
+    name: 'Red pot',
+    imageUrl: '/assets/pot3.png',
+    shopImageUrl: '/assets/shop/pot3.png',
+    requiredLevel: 3,
+    coinCost: 40,
+    type: ShopItemType.pots,
+  },
+  //Rooms
+  {
+    code: 7,
+    name: 'Starter room',
+    imageUrl: 'bg-[url(/assets/room1.png)]',
+    shopImageUrl: '/assets/shop/room1.png',
+    requiredLevel: 0,
+    coinCost: 0,
+    type: ShopItemType.rooms,
+  },
+];

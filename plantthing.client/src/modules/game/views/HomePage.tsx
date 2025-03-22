@@ -1,5 +1,5 @@
 import { useGameState } from '@hooks/useGameState';
-import { RoomsImagesMapping } from 'src/constants';
+import { ShopItems } from 'src/constants';
 import { BottomNavigation } from '../components/BottomNavigation';
 import { Plant } from '../components/Plant';
 import { PlantLevelDisplay } from '../components/PlantLevelDisplay';
@@ -8,11 +8,13 @@ import { YesterdayRewardPopup } from '../components/YesterdayRewardPopup';
 export const HomePage = () => {
   const { gameState } = useGameState();
 
-  const roomBg = RoomsImagesMapping[gameState.currentRoom];
+  const roomItem = ShopItems.find(
+    (item) => item.code === gameState.currentRoom,
+  );
 
   return (
     <div
-      className={`flex bg-contain bg-center bg-no-repeat h-screen justify-center ${roomBg}`}
+      className={`flex bg-contain bg-center bg-no-repeat h-screen justify-center ${roomItem?.imageUrl}`}
     >
       <BottomNavigation />
       <PlantLevelDisplay />

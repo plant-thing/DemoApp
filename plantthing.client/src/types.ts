@@ -33,7 +33,7 @@ export interface GameState {
   currentPot: number;
   currentEyes: number;
   currentRoom: number;
-  shop: ShopState;
+  purchasedItemsCode: number[];
 }
 
 export interface ShopState {
@@ -45,11 +45,20 @@ export interface ShopState {
 
 export interface ShopItem {
   code: number;
+  type: ShopItemType;
+  imageUrl: string;
+  shopImageUrl: string;
   name: string;
   coinCost?: number;
   gemsCost?: number;
   requiredLevel: number;
-  isPurchased: boolean;
+}
+
+export enum ShopItemType {
+  pots,
+  eyes,
+  rooms,
+  others,
 }
 
 export enum StatsType {

@@ -5,7 +5,7 @@ import { LevelExpMapping, StatsResultHappinessMapping } from 'src/constants';
 import { calculateStatLevel, getStatsResultForLevel } from 'src/utils';
 import { GameStateContext } from '../contexts';
 import { LoadingPage } from '../modules/application/views/LoadingPage';
-import { GameState, PlantHappiness, ShopState, StatsType } from '../types';
+import { GameState, PlantHappiness, StatsType } from '../types';
 
 const key = 'game.state';
 
@@ -15,58 +15,6 @@ export interface GameStateValue {
   gameState: GameState;
   currentLevel: number;
 }
-
-const defaultShopState: ShopState = {
-  eyes: [
-    {
-      code: 1,
-      name: 'Starter eyes',
-      isPurchased: true,
-      requiredLevel: 0,
-      coinCost: 0,
-    },
-    {
-      code: 2,
-      name: 'Blue eyes',
-      isPurchased: false,
-      requiredLevel: 2,
-      coinCost: 20,
-    },
-  ],
-  pots: [
-    {
-      code: 1,
-      name: 'Starter pot',
-      isPurchased: true,
-      requiredLevel: 0,
-      coinCost: 0,
-    },
-    {
-      code: 2,
-      name: 'Blue pot',
-      isPurchased: false,
-      requiredLevel: 2,
-      coinCost: 20,
-    },
-    {
-      code: 3,
-      name: 'Red pot',
-      isPurchased: false,
-      requiredLevel: 3,
-      coinCost: 40,
-    },
-  ],
-  rooms: [
-    {
-      code: 1,
-      name: 'Starter room',
-      isPurchased: true,
-      requiredLevel: 0,
-      coinCost: 0,
-    },
-  ],
-  others: [],
-};
 
 const defaultGameState: GameState = {
   username: 'Player1',
@@ -78,9 +26,9 @@ const defaultGameState: GameState = {
   currentXp: 500,
   hasClaimedYesterdayReward: false,
   currentEyes: 1,
-  currentPot: 1,
-  currentRoom: 1,
-  shop: defaultShopState,
+  currentPot: 3,
+  currentRoom: 7,
+  purchasedItemsCode: [1, 3, 7],
 };
 
 function deletetPersistedGameState() {
