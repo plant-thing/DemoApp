@@ -22,7 +22,7 @@ export const HomePage = () => {
       <BottomNavigation />
       <PlantLevelDisplay />
       <WaterPlantButton setIsWatering={setIsWatering} />
-      <div className="flex items-center w-3/4">
+      <div className="flex items-center justify-center w-3/4">
         <Plant isWatering={isWatering} />
       </div>
       <YesterdayRewardPopup />

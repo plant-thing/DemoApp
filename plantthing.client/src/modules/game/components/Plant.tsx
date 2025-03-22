@@ -15,7 +15,7 @@ export const Plant = (props: PlantProps) => {
   const potItem = ShopItems.find((item) => item.code === gameState.currentPot);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full max-w-xs">
       {props.isWatering && (
         <img
           src="/assets/watering.gif"

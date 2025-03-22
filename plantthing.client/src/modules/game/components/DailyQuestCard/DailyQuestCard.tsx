@@ -33,8 +33,8 @@ export const DailyQuestCard = (props: DailyQuestCardProps) => {
 
   return (
     <Card>
-      <div className="flex justify-between">
-        <div className="flex gap-4">
+      <div className="flex">
+        <div className="flex gap-4 justify-between">
           <div className="flex items-center">
             <img src={props.quest.imageUrl} width={96} height={64} />
           </div>
@@ -43,7 +43,7 @@ export const DailyQuestCard = (props: DailyQuestCardProps) => {
               <h3 className="text-xl">{props.quest.title}</h3>
               <p>{props.quest.description}</p>
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex flex-grow gap-4 items-center">
               <div className="text-sm">Reward:</div>
               {props.quest.reward.gems && (
                 <div className="flex gap-1 items-center">
