@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Button, Popup } from 'pixel-retroui';
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { SensorsApi } from 'src/api';
 import { LevelExpMapping, StatsResultHappinessMapping } from 'src/constants';
@@ -53,6 +54,7 @@ function getPersistedGameState(): GameState {
 
 export function GameStateProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isLevelUpPopupOpen, setIsLevelUpPopupOpen] = useState(false);
   const [gameState, setGameState] = useState<GameState>(
     getPersistedGameState(),
   );
@@ -67,21 +69,34 @@ export function GameStateProvider({ children }: { children: ReactNode }) {
     setIsLoading(false);
   }, 3000);
 
-  const saveGameState = useCallback(async (gameState: GameState) => {
-    setPersistedGameState(gameState);
-    setGameState(gameState);
-  }, []);
+  const currentLevel = useMemo(() => {
+    const levels = Object.entries(LevelExpMapping).filter(
+      (x) => x[1] <= gameState.currentXp,
+    );
+    return levels.length == 0 ? 1 : Number(levels[levels.length - 1][0]);
+  }, [gameState.currentXp]);
+
+  const saveGameState = useCallback(
+    async (gameState: GameState) => {
+      const nextLevelXp = LevelExpMapping[currentLevel + 1];
+
+      setPersistedGameState(gameState);
+      setGameState(gameState);
+
+      if (gameState.currentXp >= nextLevelXp) {
+        setIsLevelUpPopupOpen(true);
+      }
+    },
+    [currentLevel],
+  );
 
   const clearGameState = useCallback(async () => {
     deletetPersistedGameState();
   }, []);
 
-  const currentLevel = useMemo(() => {
-    const levels = Object.entries(LevelExpMapping).filter(
-      (x) => x[1] < gameState.currentXp,
-    );
-    return levels.length == 0 ? 1 : Number(levels[levels.length - 1][0]);
-  }, [gameState.currentXp]);
+  const handleLevelupClose = () => {
+    setIsLevelUpPopupOpen(false);
+  };
 
   useEffect(() => {
     if (sensor && gameState.lastSensorReading !== sensor.lastReading.created) {
@@ -96,8 +111,6 @@ export function GameStateProvider({ children }: { children: ReactNode }) {
       ];
       const lowestLevel = Math.max(...allStatsLevel);
       const globalStatsResult = getStatsResultForLevel(lowestLevel);
-
-      console.log(lowestLevel);
 
       saveGameState({
         ...gameState,
@@ -117,6 +130,34 @@ export function GameStateProvider({ children }: { children: ReactNode }) {
       value={{ gameState, currentLevel, saveGameState, clearGameState }}
     >
       {children}
+      <Popup
+        isOpen={isLevelUpPopupOpen}
+        onClose={() => {}}
+        closeButtonText=""
+        className="p-4"
+      >
+        <div className="flex flex-col justify-center gap-4">
+          <div className="flex flex-col justify-center gap-2">
+            <h1 className="text-2xl text-green-500 font-minecraft text-center font-semibold">
+              You have level up
+            </h1>
+            <h3 className="text-xl font-minecraft text-center">
+              You are now level
+            </h3>
+            <h2 className="text-6xl font-semibold font-minecraft text-center">
+              {currentLevel}
+            </h2>
+            <h4 className="font-bold">New</h4>
+            <ul className="list-disc">
+              <li>Your virtual plant has grown</li>
+              <li>Your have unlocked new items in the shop</li>
+            </ul>
+            <Button onClick={handleLevelupClose} className="bg-blue-500">
+              Ok
+            </Button>
+          </div>
+        </div>
+      </Popup>
     </GameStateContext.Provider>
   );
 }

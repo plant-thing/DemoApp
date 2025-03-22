@@ -140,7 +140,7 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
             )}
         </div>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={onPopupClosed}>
+      <Popup isOpen={isPopupOpen} onClose={onPopupClosed} closeButtonText="">
         <div className="flex flex-col items-center">
           <h1 className="text-2xl text-center">{props.item.name}</h1>
           <h2 className="text-xl text-center text-green-500">Purchased</h2>
