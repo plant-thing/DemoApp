@@ -43,6 +43,7 @@ This application is built using the following frameworks/libraries.
 
 - [React.js](https://reactjs.org/)
 - [RetroUI](https://www.retroui.io/)
+- [Microsoft .NET](https://dotnet.microsoft.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
