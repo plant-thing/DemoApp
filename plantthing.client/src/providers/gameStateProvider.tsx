@@ -29,6 +29,8 @@ const defaultGameState: GameState = {
   currentPot: 3,
   currentRoom: 7,
   purchasedItemsCode: [1, 3, 7],
+  completedDailyQuestsCode: [1],
+  claimedDailyQuestsCode: [],
 };
 
 function deletetPersistedGameState() {

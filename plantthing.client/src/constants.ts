@@ -1,4 +1,5 @@
 import {
+  DailyQuest,
   PlantHappiness,
   ShopItem,
   ShopItemType,
@@ -159,5 +160,47 @@ export const ShopItems: ShopItem[] = [
     requiredLevel: 0,
     coinCost: 0,
     type: ShopItemType.rooms,
+  },
+  {
+    code: 8,
+    name: 'City night',
+    imageUrl: 'bg-[url(/assets/room2.png)]',
+    shopImageUrl: '/assets/shop/room2.png',
+    requiredLevel: 3,
+    gemsCost: 3,
+    type: ShopItemType.rooms,
+  },
+];
+
+export const DailyQuests: DailyQuest[] = [
+  {
+    code: 1,
+    title: 'Daily login',
+    description: 'Login daily for a reward',
+    imageUrl: '/assets/quest/1.png',
+    reward: {
+      coins: 10,
+      exp: 50,
+    },
+  },
+  {
+    code: 2,
+    title: 'How is your plant?',
+    description: 'Check the live stats of your plant',
+    imageUrl: '/assets/quest/2.png',
+    reward: {
+      coins: 25,
+      exp: 25,
+    },
+  },
+  {
+    code: 3,
+    title: 'Water your plant',
+    description: 'Water your virtual plant',
+    imageUrl: '/assets/quest/3.png',
+    reward: {
+      gems: 1,
+      exp: 50,
+    },
   },
 ];

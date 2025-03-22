@@ -1,6 +1,7 @@
 import { BackButton } from '@components/BackButton';
 import { useGameState } from '@hooks/useGameState';
 import { Card, ProgressBar } from 'pixel-retroui';
+import { useEffect } from 'react';
 import {
   LevelExpMapping,
   MaxLuxValue,
@@ -12,9 +13,18 @@ import { StatsType } from 'src/types';
 import { LiveStatCard } from '../components/LiveStatsCard';
 
 export const ProfilePage = () => {
-  const { gameState, currentLevel } = useGameState();
+  const { gameState, currentLevel, saveGameState } = useGameState();
 
   const nextLevelXpNeeded = LevelExpMapping[currentLevel + 1];
+
+  useEffect(() => {
+    if (!gameState.completedDailyQuestsCode.includes(2)) {
+      saveGameState({
+        ...gameState,
+        completedDailyQuestsCode: [...gameState.completedDailyQuestsCode, 2],
+      });
+    }
+  }, [gameState, saveGameState]);
 
   return (
     <div className="flex bg-[url(/assets/background2.png)] grow justify-center animate-bg">

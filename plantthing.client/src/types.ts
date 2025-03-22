@@ -34,6 +34,8 @@ export interface GameState {
   currentEyes: number;
   currentRoom: number;
   purchasedItemsCode: number[];
+  completedDailyQuestsCode: number[];
+  claimedDailyQuestsCode: number[];
 }
 
 export interface ShopState {
@@ -52,6 +54,20 @@ export interface ShopItem {
   coinCost?: number;
   gemsCost?: number;
   requiredLevel: number;
+}
+
+export interface DailyQuest {
+  code: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  reward: DailyQuestReward;
+}
+
+export interface DailyQuestReward {
+  coins?: number;
+  gems?: number;
+  exp?: number;
 }
 
 export enum ShopItemType {

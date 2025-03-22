@@ -134,10 +134,7 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
             !isPurchased &&
             hasRequiredLevel &&
             hasRequiredCurrency && (
-              <Button
-                onClick={handlePurchase}
-                className="bg-red-500 text-white"
-              >
+              <Button onClick={handlePurchase} className="bg-yellow-500">
                 Purchase
               </Button>
             )}
