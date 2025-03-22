@@ -36,7 +36,7 @@ export const PlantLevelDisplay = () => {
       <div className="flex flex-col gap-2">
         <Link
           to="/profile"
-          className={`flex gap-1 bg-yellow-100 bg-opacity-80 border-2 w-52 ${borderColor} border-l-0`}
+          className={`flex gap-1 bg-yellow-100 bg-opacity-80 border-2 w-52 ${borderColor} border-l-0 rounded-md rounded-l-none`}
         >
           <div
             style={{ width: 48 }}

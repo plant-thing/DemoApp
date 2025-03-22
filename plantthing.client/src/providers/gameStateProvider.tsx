@@ -65,7 +65,7 @@ export function GameStateProvider({ children }: { children: ReactNode }) {
 
   setTimeout(() => {
     setIsLoading(false);
-  }, 2000);
+  }, 3000);
 
   const saveGameState = useCallback(async (gameState: GameState) => {
     setPersistedGameState(gameState);
