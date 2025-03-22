@@ -1,9 +1,18 @@
 import { BackButton } from '@components/BackButton';
 import { useGameState } from '@hooks/useGameState';
 import { Button, Card } from 'pixel-retroui';
+import { useState } from 'react';
+import { EditPlantNamePopup } from '../components/EditPlantNamePopup';
+import { EditUserIdPopup } from '../components/EditUserIdPopup';
+import { NotAvailableInDemoPopup } from '../components/NotAvailableInDemoPopup';
 
 export const SettingsPage = () => {
   const { gameState, clearGameState } = useGameState();
+  const [isEditUserIdPopupOpen, setIsEditUserIdPopupOpen] = useState(false);
+  const [isEditPlantNamePopupOpen, setIsEditPlantNamePopupOpen] =
+    useState(false);
+  const [isNotAvailableInDemoPopupOpen, setIsNotAvailableInDemoPopupOpen] =
+    useState(false);
 
   const handleLogout = () => {
     clearGameState();
@@ -24,19 +33,25 @@ export const SettingsPage = () => {
             <div className="flex flex-col gap-4">
               <div className="flex justify-between items-center">
                 <div className="flex gap-2">
-                  <span className="font-bold">User Id:</span>
-                  <span>{gameState.username}</span>
+                  <span className="font-bold text-nowrap">User Id:</span>
+                  <span className="truncate w-40">{gameState.username}</span>
                 </div>
-                <div className="text-2xl text-blue-500 cursor-pointer">
+                <div
+                  className="text-2xl text-blue-500 cursor-pointer"
+                  onClick={() => setIsEditUserIdPopupOpen(true)}
+                >
                   <i className="hn hn-edit-solid"></i>
                 </div>
               </div>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2">
-                  <span className="font-bold">Plant name:</span>
-                  <span>{gameState.plantName}</span>
+                  <span className="font-bold text-nowrap">Plant name:</span>
+                  <span className="truncate w-40">{gameState.plantName}</span>
                 </div>
-                <div className="text-2xl text-blue-500 cursor-pointer">
+                <div
+                  className="text-2xl text-blue-500 cursor-pointer"
+                  onClick={() => setIsEditPlantNamePopupOpen(true)}
+                >
                   <i className="hn hn-edit-solid"></i>
                 </div>
               </div>
@@ -45,7 +60,10 @@ export const SettingsPage = () => {
                   <span className="font-bold">Plant type:</span>
                   <span>{gameState.plantType}</span>
                 </div>
-                <div className="text-2xl text-blue-500 cursor-pointer">
+                <div
+                  className="text-2xl text-blue-500 cursor-pointer"
+                  onClick={() => setIsNotAvailableInDemoPopupOpen(true)}
+                >
                   <i className="hn hn-edit-solid"></i>
                 </div>
               </div>
@@ -85,6 +103,7 @@ export const SettingsPage = () => {
                 bg="red"
                 textColor="white"
                 className="flex items-center gap-2"
+                onClick={() => setIsNotAvailableInDemoPopupOpen(true)}
               >
                 Disconnect
               </Button>
@@ -92,6 +111,18 @@ export const SettingsPage = () => {
           </div>
         </Card>
       </div>
+      <EditUserIdPopup
+        isOpen={isEditUserIdPopupOpen}
+        handleOnClose={() => setIsEditUserIdPopupOpen(false)}
+      />
+      <EditPlantNamePopup
+        isOpen={isEditPlantNamePopupOpen}
+        handleOnClose={() => setIsEditPlantNamePopupOpen(false)}
+      />
+      <NotAvailableInDemoPopup
+        isOpen={isNotAvailableInDemoPopupOpen}
+        handleOnClose={() => setIsNotAvailableInDemoPopupOpen(false)}
+      />
     </div>
   );
 };

@@ -126,7 +126,7 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
             !isPurchased &&
             hasRequiredLevel &&
             !hasRequiredCurrency && (
-              <Button disabled className="bg-gray-500">
+              <Button disabled className="bg-gray-400">
                 Purchase
               </Button>
             )}

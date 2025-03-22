@@ -31,7 +31,7 @@ export const ProfilePage = () => {
       <BackButton to="/" />
 
       <div className="container mx-auto p-1 flex flex-col gap-2 pt-32 pb-8">
-        <h1 className="text-3xl font-minecraft text-center font-semibold">
+        <h1 className="text-3xl font-minecraft text-center font-semibold truncate px-2">
           {gameState.plantName}
         </h1>
         <Card className="p-2">

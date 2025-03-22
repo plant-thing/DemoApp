@@ -46,7 +46,9 @@ export const PlantLevelDisplay = () => {
           </div>
           <div className="flex flex-col p-1 grow">
             <div className="flex text-sm justify-between">
-              <h3 className="font-semibold">{gameState.plantName}</h3>
+              <h3 className="font-semibold w-24 truncate">
+                {gameState.plantName}
+              </h3>
               <span className="text-xs">Lvl {currentLevel}</span>
             </div>
             <ProgressBar
