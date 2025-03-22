@@ -23,7 +23,7 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
 
   const isPurchased = gameState.purchasedItemsCode.includes(props.item.code);
 
-  const isEquipe = useMemo(() => {
+  const isEquip = useMemo(() => {
     switch (props.item.type) {
       case ShopItemType.eyes:
         return gameState.currentEyes === props.item.code;
@@ -107,22 +107,22 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
           </div>
         </div>
         <div className="flex items-center">
-          {isEquipe && (
+          {isEquip && (
             <div className="flex items-center px-2 py-1 mr-2 border-4 border-blue-500 text-blue-500">
               Equipped
             </div>
           )}
-          {!isEquipe && isPurchased && (
+          {!isEquip && isPurchased && (
             <Button onClick={handleEquip} className="bg-green-500">
-              Equipe
+              Equip
             </Button>
           )}
-          {!isEquipe && !hasRequiredLevel && (
+          {!isEquip && !hasRequiredLevel && (
             <div className="flex items-center px-2 mb-1 mr-2 text-red-500">
               <strong>Require lvl {props.item.requiredLevel}</strong>
             </div>
           )}
-          {!isEquipe &&
+          {!isEquip &&
             !isPurchased &&
             hasRequiredLevel &&
             !hasRequiredCurrency && (
@@ -130,7 +130,7 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
                 Purchase
               </Button>
             )}
-          {!isEquipe &&
+          {!isEquip &&
             !isPurchased &&
             hasRequiredLevel &&
             hasRequiredCurrency && (
