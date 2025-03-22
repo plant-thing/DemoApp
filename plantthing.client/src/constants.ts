@@ -135,15 +135,6 @@ export const ShopItems: ShopItem[] = [
   },
   {
     code: 5,
-    name: 'Cheap Red pot',
-    imageUrl: '/assets/pot3.png',
-    shopImageUrl: '/assets/shop/pot3.png',
-    requiredLevel: 2,
-    coinCost: 40,
-    type: ShopItemType.pots,
-  },
-  {
-    code: 6,
     name: 'Red pot',
     imageUrl: '/assets/pot3.png',
     shopImageUrl: '/assets/shop/pot3.png',
@@ -169,6 +160,15 @@ export const ShopItems: ShopItem[] = [
     requiredLevel: 3,
     gemsCost: 3,
     type: ShopItemType.rooms,
+  },
+  {
+    code: 9,
+    name: 'Sun glasses',
+    imageUrl: 'bg-[url(/assets/glasses.png)]',
+    shopImageUrl: '/assets/shop/glasses.png',
+    requiredLevel: 3,
+    gemsCost: 2,
+    type: ShopItemType.others,
   },
 ];
 
