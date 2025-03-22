@@ -24,7 +24,7 @@ export const WaterPlantButton = (props: WaterPlantButtonProps) => {
   if (hasWateredPlantToday) return;
 
   return (
-    <div className="absolute top-48 w-full z-40 px-2">
+    <div className="absolute top-48 w-full z-50 px-2">
       <div
         onClick={handleOnClick}
         className="w-16 p-2 border-2 border-blue-500 bg-blue-200 rounded-md bg-opacity-80"

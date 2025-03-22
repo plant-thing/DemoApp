@@ -20,12 +20,15 @@ export const Plant = (props: PlantProps) => {
         <img
           src="/assets/watering.gif"
           width="75%"
-          className="absolute left-1/2 top-[15%]"
+          className="absolute left-1/2 top-[15%] z-40"
         />
       )}
-      <img src={sproutUrl} className="absolute top-0 w-full" />
-      <img src={eyesItem?.imageUrl} className="absolute top-0 w-full" />
-      <img src={potItem?.imageUrl} className="w-full" />
+      {gameState.currentAccessories.map((itemCode) => 
+        <img src={ShopItems.find(x => x.code === itemCode)?.imageUrl} className="absolute top-0 w-full z-30"/>
+      )}
+      <img src={sproutUrl} className="absolute top-0 w-full z-20" />
+      <img src={eyesItem?.imageUrl} className="absolute top-0 w-full z-10" />
+      <img src={potItem?.imageUrl} className="w-full z-0" />
     </div>
   );
 };

@@ -31,6 +31,8 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
         return gameState.currentPot === props.item.code;
       case ShopItemType.rooms:
         return gameState.currentRoom === props.item.code;
+        case ShopItemType.others:
+          return gameState.currentAccessories.includes(props.item.code);
       default:
         return false;
     }
@@ -38,6 +40,7 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
     gameState.currentEyes,
     gameState.currentPot,
     gameState.currentRoom,
+    gameState.currentAccessories,
     props.item.code,
     props.item.type,
   ]);
@@ -72,6 +75,11 @@ export const ShopItemCard = (props: ShopItemCardProps) => {
           currentRoom: props.item.code,
         });
         break;
+      case ShopItemType.others:
+        saveGameState({
+          ...gameState,
+          currentAccessories: [...gameState.currentAccessories, props.item.code],
+        })
     }
   };
 

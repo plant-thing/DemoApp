@@ -29,6 +29,7 @@ const defaultGameState: GameState = {
   currentEyes: 1,
   currentPot: 3,
   currentRoom: 7,
+  currentAccessories: [],
   purchasedItemsCode: [1, 3, 7],
   completedDailyQuestsCode: [1],
   claimedDailyQuestsCode: [],

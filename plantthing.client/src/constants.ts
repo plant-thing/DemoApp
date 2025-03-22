@@ -164,7 +164,7 @@ export const ShopItems: ShopItem[] = [
   {
     code: 9,
     name: 'Sun glasses',
-    imageUrl: 'bg-[url(/assets/glasses.png)]',
+    imageUrl: '/assets/glasses.png',
     shopImageUrl: '/assets/shop/glasses.png',
     requiredLevel: 3,
     gemsCost: 2,

@@ -32,7 +32,7 @@ export const PlantLevelDisplay = () => {
   const nextLevelXpNeeded = LevelExpMapping[currentLevel + 1];
 
   return (
-    <div className="absolute top-32 w-full z-40">
+    <div className="absolute top-32 w-full z-50">
       <div className="flex flex-col gap-2">
         <Link
           to="/profile"

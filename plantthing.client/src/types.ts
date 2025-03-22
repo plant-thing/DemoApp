@@ -33,6 +33,7 @@ export interface GameState {
   currentPot: number;
   currentEyes: number;
   currentRoom: number;
+  currentAccessories: number[];
   purchasedItemsCode: number[];
   completedDailyQuestsCode: number[];
   claimedDailyQuestsCode: number[];
